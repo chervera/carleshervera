@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ article.title }}{% endblock %}
+{% block description %}{{ article.shortDescription }}{% endblock %}
+
 {% block body %}
     {% include 'menu.html.twig' with {'inside': 'inside'}%}
     <article id="article">
