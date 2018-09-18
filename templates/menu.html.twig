@@ -1,0 +1,14 @@
+<header class="{{inside is defined ? 'inside': ''}}">
+    {% if inside is defined %}
+        <a href="/" title="Carles Hervera" class="main"><span class="logo">C</span><span class="name">Hervera</span></a>
+    {% endif %}
+    <div id="toggle-nav" class="toggler-nav" data-target="main-menu">
+        <span>Open Menu</span>
+    </div>
+    <nav id="main-menu">
+        <a href="{{path('main')}}#about-me" title="About Me">About Me</a>
+        <a href="{{path('articles')}}" title="Articles">Articles</a>
+        <a href="{{path('main')}}#employement" title="Employement">Employement</a>
+        <a href="{{path('main')}}#contact" title="Contact">Contact</a>
+    </nav>
+</header>

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'menu.html.twig' with {'inside': 'inside'} %}
+    <section id="articles" class="grey screen-size">
+        <h1 class="h1">Articles</h1>
+        <div class="article-list">
+            {% for article in articles.results %}
+                <a class="article" href="{{ path('article', {'slug': article.slug}) }}">
+                    <div class="header">
+                        <img src="{{ asset('img/articles/' ~ article.image) }}" alt="Imagen de {{ article.title }}"/>
+                    </div>
+                    <div class="content featured type1">
+                        <h2 class="h2">{{ article.title }}</h2>
+                        <p>
+                            {{ article.shortDescription }}
+                        </p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+        {% include 'pagination.html.twig' with {'pagination': articles} %}
+
+    </section>
+{% endblock %}

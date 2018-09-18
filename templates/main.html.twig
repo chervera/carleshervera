@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'menu.html.twig' %}
+    <section id="start" class="screen-size">
+        <h1 class="h1">Carles Hervera</h1>
+        <h2 class="h2">Frontend developer // Software Engineer</h2>
+    </section>
+    <section id="about-me" class="dark screen-size">
+        <h1 class="h1">About Me</h1>
+        <p>
+            Soy un apasionado de los proyectos web y del mundo de internet en general. Me gusta la tecnología y trabajar con ella. <br/>
+            Cuento con más de diez años de experiencia desarrollando software.<br/>
+            En la actualidad trabajo en desarrollando proyectos Frontend con las últimas tecnologías (Angular, AngularJS y otros).<br/> 
+            Me encargo de gestionar los proyectos, darles forma y encontrar la mejor solución para ayudar a nuestros clientes a conseguir sus objetivos.
+        </p>
+        <div class="featured social-networks">
+            <a href="#">Linkedin</a><br/>
+            <a href="#">Twitter</a><br/>
+            <a href="#">Instagram</a>
+        </div>
+    </section>
+    <section id="employement" class="screen-size">
+        <h1 class="h1">Employement</h1>
+        <div class="timeline">
+            <div class="event">
+                <div class="header">
+                    <div class="wrapper">
+                        <span class="year">2008</span>
+                        <span class="title">INDRA</span>
+                    </div>
+                </div>
+                <span class="description">Trabajé en INDRA, donde aprendí a trabajar en proyectos complejos que exigían
+                    de un gran conocimiento tecnológico, capacidad de aprendizaje constante y facilidad para el trabajo
+                    en equipo.</span>
+            </div>
+
+            <div class="event">
+                <div class="header">
+                    <div class="wrapper">
+                        <span class="year">2012</span>
+                        <span class="title">AXON</span>
+                    </div>
+                </div>
+                <span class="description">Inicié mi propia empresa, AXON, donde
+                    aprendí del trato con el cliente, la venta y la
+                    gestión de proyectos desde el principio
+                    hasta el fin, realizando toma de requisitos,
+                    consultoría, diseño, ejecución y manteni-
+                    miento. También aprendí a gestionar
+                    equipos, tratar con las personas y sacar lo
+                    mejor de ellas.
+                </span>
+
+            </div>
+            <div class="event">
+                <div class="header">
+                    <div class="wrapper">
+                        <span class="year">2017</span>
+                        <span class="title">ILERNA ONLINE</span>
+                    </div>
+                </div>
+                <span class="description"> En mi paso por Ilerna Online tomé contacto con la formación, un tema que
+                    siempre me ha interesado. Es una buena forma de crear mejores equipos y de sentar mejor los
+                    conocimientos propios.</span>
+            </div>
+
+            <div class="event">
+                <div class="header">
+                    <div class="wrapper">
+                        <span class="year">2018</span>
+                        <span class="title">INDRA</span>
+                    </div>
+                </div>
+                <span class="description">He vuelto a Indra donde ejecuto todo lo aprendido y sigo creciendo.</span>
+            </div>
+
+            </ul>
+    </section>
+    <section id="articles" class="grey screen-size">
+        <h1 class="h1">Articles</h1>
+        <div class="article-list">
+        {% for article in articles %}
+            <a class="article" href="{{path('article', {'slug': article.slug})}}">
+                <div class="header">
+                    <img src="{{ asset('img/articles/' ~ article.image) }}" alt="Imagen de {{article.title}}" />
+                </div>
+                <div class="content featured type1">
+                    <h2 class="h2">{{article.title}}</h2>
+                    <p>
+                    {{article.shortDescription}}
+                    </p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <a class="more" href="{{path('articles')}}">
+            Ver todos
+        </a>
+    </section>
+    <section id="contact-me" class="screen-size">
+        <div class="header dark">
+            <div class="featured">
+                <img src="{{ asset( 'img/all-of-mi.jpg')}}" alt="All of me" />
+            </div>
+        </div>
+        <div class="content">
+            <h1 class="h1">chervera@gmail.com</h1>
+            <ul class="social-networks icons">
+                <li>
+                    <a href="https://www.linkedin.com/in/carleshervera/" class="linked-in" title="Linked In">LinkedIn</a>
+                </li>
+                <li>
+                    <a href="#" class="twitter" title="Twitter">Twitter</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        const firstSectionToShowMenuId = 'start';
+        const lastSectionToShowWhiteId = 'about-me';
+        const marginToShowMenu = 80;
+        
+        function checkMenuVisibility() {
+            let top = window.pageYOffset || document.documentElement.scrollTop;
+
+            const firstSectionToShowMenuElement = document.getElementById(firstSectionToShowMenuId);
+            const lastSectionToShowWhiteElement = document.getElementById(lastSectionToShowWhiteId);
+            if (!firstSectionToShowMenuElement || !lastSectionToShowWhiteElement) {
+                console.error("No first or last section to show menu");
+                return;
+            }
+            const firstSectionToShowBounding = firstSectionToShowMenuElement.getBoundingClientRect();
+            const lastSectionToShowWhiteBounding = lastSectionToShowWhiteElement.getBoundingClientRect();
+            if ((firstSectionToShowBounding.height + firstSectionToShowBounding.top - marginToShowMenu) < 0) {
+                toggler.classList.add('show');
+            } else {
+                toggler.classList.remove('show');
+                toggler.classList.remove('pressed');
+                menu.classList.remove('opened');
+            }
+
+            if ((lastSectionToShowWhiteBounding.height + lastSectionToShowWhiteBounding.top - marginToShowMenu) < 0) {
+                toggler.classList.add('black');
+            } else {
+                toggler.classList.remove('black');
+            }
+        }
+
+        document.addEventListener('scroll', checkMenuVisibility);
+    </script>
+    {% endblock %}

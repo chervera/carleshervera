@@ -1,0 +1,38 @@
+{% if pagination.maxPages > 1 %}
+    <div class="pagination">
+        <ul>
+            {% if pagination.currentPage > 1 %}
+                <li>
+                    {% if tag is defined %}
+                        <a href="{{ path('articles_tag', {'tag': tag}) }}" class="prev-page"><<</a>
+                    {% else %}
+                        <a href="{{ path('articles') }}" class="prev-page"><<</a>
+                    {% endif %}
+                </li>
+            {% endif %}
+            {% for i in 1..pagination.maxPages %}
+                <li>
+                    {% if tag is defined %}
+                        <a href="{{ path('articles_tag', {'tag': tag, 'page': i}) }}"
+                           class="page {{ pagination.currentPage == i ? 'current':'' }}">{{ i }}</a>
+                    {% else %}
+                        <a href="{{ path('articles', {'page': i}) }}"
+                           class="page {{ pagination.currentPage == i ? 'current':'' }}">{{ i }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            {% if pagination.currentPage < pagination.maxPages %}
+                <li>
+                    {% if tag is defined %}
+                        <a href="{{ path('articles_tag', {'tag': tag, 'page': pagination.maxPages}) }}"
+                           class="next-page">>></a>
+                    {% else %}
+
+                        <a href="{{ path('articles', {'page': pagination.maxPages}) }}" class="next-page">>></a>
+
+                    {% endif %}
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}
