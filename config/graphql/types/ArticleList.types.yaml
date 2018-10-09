@@ -1,0 +1,8 @@
+ArticleList:
+  type: object
+  config:
+    description: "A list of articles"
+    fields:
+      articles:
+          type: "[Article]"
+          description: "Articles"

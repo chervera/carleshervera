@@ -630,6 +630,10 @@ section .h1 {
     background: url('../img/twitter.png') center center no-repeat;
 }
 
+.social-networks.icons a.github {
+    background: url('../img/github.png') center center no-repeat;
+}
+
 #article #header {
     padding: 15px;
 }

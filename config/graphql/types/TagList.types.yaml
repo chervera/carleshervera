@@ -1,0 +1,8 @@
+TagList:
+  type: object
+  config:
+    description: "A list of tags"
+    fields:
+      tags:
+          type: "[Tag]"
+          description: "Tags"

@@ -1,0 +1,17 @@
+Tag:
+  type: object
+  config:
+    description: "A tag"
+    fields:
+      id:
+        type: "Int!"
+        description: "The unique ID of the tag."
+      name:
+        type: "String"
+        description: "Name of the tag"
+      createdOn:
+        type: "String"
+        description: "Created on date of the article"
+      slug:
+        type: "String"
+        description: "Slug for the url"

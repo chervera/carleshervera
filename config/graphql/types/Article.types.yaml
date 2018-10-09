@@ -1,0 +1,32 @@
+Article:
+  type: object
+  config:
+    description: "An article"
+    fields:
+      id:
+        type: "Int!"
+        description: "The unique ID of the article."
+      title:
+        type: "String"
+        description: "Title of the article"
+      shortDescription:
+        type: "String"
+        description: "Short description for the article"
+      createdOn:
+        type: "String"
+        description: "Created on date of the article"
+      active:
+        type: "Boolean"
+        description: "Is the article active"
+      image:
+        type: "String"
+        description: "Source of the main image"
+      smallImage:
+        type: "String"
+        description: "Source of the main image"
+      slug:
+        type: "String"
+        description: "Slug for the url"
+      tags:
+        type: "[Tag]"
+        description: "Tags"
