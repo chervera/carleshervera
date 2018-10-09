@@ -2,6 +2,10 @@
 
 {% block description %}Carles Hervera Website, Frontend Developer & Software Engineer{% endblock %}
 
+{% block headers %}
+    <link rel=”canonical” href=”{{url('main')}}” />    
+{% endblock %}
+
 {% block body %}
     {% include 'menu.html.twig' %}
     <section id="start" class="screen-size">

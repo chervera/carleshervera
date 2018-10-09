@@ -3,6 +3,10 @@
 {% block title %}{{ article.title }}{% endblock %}
 {% block description %}{{ article.shortDescription }}{% endblock %}
 
+{% block headers %}
+    <link rel=”canonical” href=”{{url('article', {'slug': article.slug})}}” />    
+{% endblock %}
+
 {% block body %}
     {% include 'menu.html.twig' with {'inside': 'inside'}%}
     <article id="article">
@@ -22,7 +26,7 @@
                 <div class="tags-list featured type2">
                     <span>Etiquetas:</span><br/>
                     {% for tag in article.tags %}
-                        <a href="{{ path('articles_tag', {'tag': tag.slug}) }}">{{tag.name}}</a>
+                        <a href="{{ path('articles_tag', {'slug': tag.slug}) }}">{{tag.name}}</a>
                     {% endfor %}
                 </div>
                 {% endif %}

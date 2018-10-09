@@ -1,9 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block headers %}
+    {% if tag is defined %}
+        <link rel=”canonical” href=”{{url('articles_tag', {'slug': tag.slug})}}” />    
+    {% else %}
+        <link rel=”canonical” href=”{{url('articles')}}” />        
+    {% endif %}
+{% endblock %}
+
 {% block body %}
     {% include 'menu.html.twig' with {'inside': 'inside'} %}
     <section id="articles" class="grey screen-size">
-        <h1 class="h1">Articles</h1>
+        <h1 class="h1">Articles {{tag is defined?' - '~ tag.name:''}}</h1>
         <div class="article-list">
             {% for article in articles.results %}
                 <a class="article" href="{{ path('article', {'slug': article.slug}) }}">

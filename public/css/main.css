@@ -407,6 +407,7 @@ section .h1 {
     text-decoration: none;
     color: #272727;
     text-align: left;
+    vertical-align: top;
 }
 
 .article-list .article img {
