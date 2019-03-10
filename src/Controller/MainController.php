@@ -14,7 +14,7 @@ use Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy;
 class MainController extends BaseController {
 
     const ARTICLES_TO_SHOW_HOMEPAGE = 3;
-    const PAGE_SIZE = 1;
+    const PAGE_SIZE = 8;
 
     /**
      * @Route("/", name="main")
@@ -35,7 +35,7 @@ class MainController extends BaseController {
         if (!$page) {
             $page = 1;
         }
-        $articlesPaginateds = $this->getDoctrine()->getRepository(Article::class)->findByActiveOrderByCreatedOnPaginated($page, self::PAGE_SIZE);
+        $articlesPaginateds = $this->getDoctrine()->getRepository(Article::class)->findByActiveOrderByCreatedOnPaginated(true, $page, self::PAGE_SIZE);
         $paginator = $this->createPaginator($articlesPaginateds, self::PAGE_SIZE, $page);
 
         return $this->render('articles.html.twig', array('articles' => $paginator));

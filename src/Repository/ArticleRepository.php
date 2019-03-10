@@ -53,7 +53,7 @@ class ArticleRepository extends Repository
         return $this->findByActiveOrderByCreatedOnQuery($active, $limit)->getResult();
     }
 
-    public function findByActiveOrderByCreatedOnPaginated($active = true,$currentPage = 1, $limit = 3)
+    public function findByActiveOrderByCreatedOnPaginated($active = true, $currentPage = 1, $limit = 3)
     {
         $query = $this->findByActiveOrderByCreatedOnQuery($active);
         $paginator = $this->paginate($query, $currentPage, $limit);

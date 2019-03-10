@@ -18,7 +18,7 @@ body {
     padding-top: 8px;
 }
 
-.code.minnor{
+.code.minnor {
     font-family: monospace;
     font-weight: 600;
 }
@@ -33,6 +33,16 @@ body {
     color: #08b791;
     font-style: italic;
     font-weight: 700;
+}
+
+.code.css {
+    color: #ff00a1;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.code.code--big {
+    font-size: 26px;
 }
 
 .copy-clipboard {
@@ -770,6 +780,114 @@ section .h1 {
     padding: 50px 15px;
 }
 
+.table {
+    background: #a9a9a9;
+}
+
+.table__responsive {
+    overflow: scroll;
+}
+
+.table__row {}
+
+.table__col {
+    background: #fff;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.table__col.table__col--head {
+    background: #e2e2e2;
+}
+
+.index {}
+
+.index--item {
+    display: block;
+    margin-bottom: 15px;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    color: #272727;
+}
+
+.index--item--number {
+    margin-right: 6px;
+    position: relative;
+    padding: 6px 10px;
+    font-family: monospace;
+    z-index: 1;
+}
+
+.index--item--number::before {
+    content: ' ';
+    border: 6px solid #272727;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -2;
+}
+
+.index--item--number::after {
+    content: ' ';
+    background: #fff;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    left: 6px;
+    bottom: 6px;
+    z-index: -1;
+}
+
+.index--item--number.index--item--number__odd::after {
+    top: 0px;
+    right: 0px;
+    left: 12px;
+    bottom: 8px;
+}
+
+.index--item--number.index--item--number__even::after {
+    top: 0px;
+    right: 0px;
+    left: 20px;
+    bottom: 15px;
+}
+
+.index--item--description {
+    position: relative;
+    padding-bottom: 5px;
+    z-index: 1;
+}
+
+.index--item--description::after {
+    content: ' ';
+    border-bottom: 6px solid #272727;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -2;
+}
+
+.index--item--description::before {
+    content: ' ';
+    background: #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.index--item:hover .index--item--description::before {
+    left: 100%;
+}
 
 @media (min-width:321px) {
     .h1 {
